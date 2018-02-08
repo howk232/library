@@ -20,12 +20,22 @@
 
                                 <div class="form-group col-md-8 offset-md-2">
                                     <label for="title">Tytuł</label>
-                                    <input type="text" class="form-control" placeholder="tytuł" name="title" value="">
+                                    <input type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" placeholder="tytuł" name="title" value="">
+                                    @if ($errors->has('title'))
+                                        <span style="color: red">
+                                            <strong>{{ $errors->first('title') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
 
                                 <div class="form-group col-md-8 offset-md-2">
                                     <label for="author">Autor</label>
-                                    <input type="text" class="form-control" placeholder="autor" name="author" value="">
+                                    <input type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" placeholder="autor" name="author" value="">
+                                    @if ($errors->has('author'))
+                                        <span style="color: red">
+                                            <strong>{{ $errors->first('author') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
 
                                 <div class="form-group col-md-8 offset-md-2">

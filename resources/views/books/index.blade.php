@@ -29,7 +29,6 @@
                     <th>Tytuł</th>
                     <th>Data wydania</th>
                     <th>Opis</th>
-                    <th>Miniatura</th>
                     <th>Opcje</th>
                 </tr>
                 @if($books->count())
@@ -39,7 +38,6 @@
                             <td>{{ strlen($book->title) > 10 ? substr($book->title,0,10)."..." : $book->title }}</td>
                             <td>{{ $book->date_of_issue }}</td>
                             <td>{{ $book->description }}</td>
-                            <td></td>
                             <td><a class="btn btn-info" href="{{ url('/books/' . $book->id) }}">Szeczegóły</a>
                                 <a class="btn btn-info" href="{{ url('/books/' . $book->id . '/edit') }}">Edycja</a>
                                 <a class="btn btn-danger" href="{{ url('/books/destroy/' . $book->id) }}">Usuń</a>

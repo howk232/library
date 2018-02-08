@@ -11,7 +11,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                Dodaj nową książkę
+                Edycja książki {{ $book->title }}
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ url('/books/' . $book->id) }}">
@@ -20,16 +20,26 @@
 
                     <div class="form-group col-md-8 offset-md-2">
                         <label for="title">Tytuł</label>
-                        <input type="text" class="form-control" placeholder="tytuł" name="title" value="{{ $book->title }}">
+                        <input type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" placeholder="tytuł" name="title" value="{{ $book->title }}">
+                        @if ($errors->has('title'))
+                            <span style="color: red">
+                                <strong>{{ $errors->first('title') }}</strong>
+                            </span>
+                        @endif
                     </div>
 
                     <div class="form-group col-md-8 offset-md-2">
                         <label for="author">Autor</label>
-                        <input type="text" class="form-control" placeholder="autor" name="author" value="{{ $book->author }}">
+                        <input type="text" class="form-control {{ $errors->has('author') ? ' is-invalid' : '' }}" placeholder="autor" name="author" value="{{ $book->author }}">
+                        @if ($errors->has('author'))
+                            <span style="color: red">
+                                <strong>{{ $errors->first('author') }}</strong>
+                            </span>
+                        @endif
                     </div>
 
                     <div class="form-group col-md-8 offset-md-2">
-                        <label for="date_of_issue">Autor</label>
+                        <label for="date_of_issue">Data wydania</label>
                         <input id="datepicker" type="text" class="form-control" placeholder="data wydania" name="date_of_issue" value="{{ $book->date_of_issue }}">
                     </div>
 

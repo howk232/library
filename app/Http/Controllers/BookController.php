@@ -8,6 +8,11 @@ use Session;
 
 class BookController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::paginate(10);
+        $books = Book::orderBy('created_at', 'desc')->paginate(10);
         return view('books/index', compact('books'));
     }
 
@@ -37,6 +42,16 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request, [
+            'title' => 'required|min:3',
+            'author' => 'required|min:3',
+
+        ], [
+            'required' => 'Pole jest wymagane',
+            'min' => 'Pole musi mieć minimum :min',
+        ]);
+
         $book = new Book();
         $book->title = $request->title;
         $book->author = $request->author;
@@ -81,6 +96,16 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $this->validate($request, [
+            'title' => 'required|min:3',
+            'author' => 'required|min:3',
+
+        ], [
+            'required' => 'Pole jest wymagane',
+            'min' => 'Pole musi mieć minimum :min',
+        ]);
+
         $book = Book::findOrFail($id);
         $book->title = $request->title;
         $book->author = $request->author;
