@@ -112,7 +112,8 @@ class BookController extends Controller
         $book->date_of_issue = $request->date_of_issue;
         $book->description = $request->description;
         $book->save();
-        return redirect()->route('books.index')->with('message-update','Książka została zmodyfikowana');
+
+        return view('books.show', compact('book'));
     }
 
     /**

@@ -39,7 +39,7 @@
                                 </div>
 
                                 <div class="form-group col-md-8 offset-md-2">
-                                    <label for="date_of_issue">Autor</label>
+                                    <label for="date_of_issue">Data wydania</label>
                                     <input id="datepicker" type="text" class="form-control" placeholder="data wydania" name="date_of_issue" value="">
                                 </div>
 

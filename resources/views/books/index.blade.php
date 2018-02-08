@@ -9,10 +9,6 @@
         <div class="alert alert-success" role="alert">
             {{session('message-add')}}
         </div>
-    @elseif(session('message-update'))
-        <div class="alert alert-info" role="alert">
-            {{session('message-update')}}
-        </div>
     @endif
     <div class="container-fluid" style="margin-bottom: 20px;">
         <div class="row">
