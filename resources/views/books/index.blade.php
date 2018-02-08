@@ -37,7 +37,7 @@
                             <td>{{ $book->author }}</td>
                             <td>{{ strlen($book->title) > 10 ? substr($book->title,0,10)."..." : $book->title }}</td>
                             <td>{{ $book->date_of_issue }}</td>
-                            <td>{{ $book->description }}</td>
+                            <td>{{ strlen($book->description) > 100 ? substr($book->description,0,100)."..." : $book->description }}</td>
                             <td><a class="btn btn-info" href="{{ url('/books/' . $book->id) }}">Szeczegóły</a>
                                 <a class="btn btn-info" href="{{ url('/books/' . $book->id . '/edit') }}">Edycja</a>
                                 <a class="btn btn-danger" href="{{ url('/books/destroy/' . $book->id) }}">Usuń</a>

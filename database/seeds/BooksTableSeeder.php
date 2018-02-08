@@ -18,7 +18,7 @@ class BooksTableSeeder extends Seeder
             $book->title = $faker->word(50);
             $book->author = $faker->firstName . ' ' . $faker->LastName;
             $book->date_of_issue = $faker->date('Y-m-d');
-            $book->description = $faker->text(150);
+            $book->description = $faker->text(300);
             $book->save();
         }
     }
