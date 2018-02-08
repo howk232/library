@@ -22,7 +22,7 @@
                         <label for="title">Tytuł</label>
                         <input type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" placeholder="tytuł" name="title" value="{{ $book->title }}">
                         @if ($errors->has('title'))
-                            <span style="color: red">
+                            <span class="{{ $errors->has('author') ? ' invalid-feedback' : '' }}">
                                 <strong>{{ $errors->first('title') }}</strong>
                             </span>
                         @endif
@@ -32,7 +32,7 @@
                         <label for="author">Autor</label>
                         <input type="text" class="form-control {{ $errors->has('author') ? ' is-invalid' : '' }}" placeholder="autor" name="author" value="{{ $book->author }}">
                         @if ($errors->has('author'))
-                            <span style="color: red">
+                            <span class="{{ $errors->has('author') ? ' invalid-feedback' : '' }}">
                                 <strong>{{ $errors->first('author') }}</strong>
                             </span>
                         @endif
