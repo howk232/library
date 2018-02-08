@@ -11,14 +11,9 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 Route:: get('/', 'BookController@index');
 Route::resource('/books', 'BookController');
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', 'BookCOntroller@index')->name('home');
 Route::get('/books/destroy/{id}', 'BookController@destroy');
