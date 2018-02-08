@@ -43,8 +43,7 @@ class BookController extends Controller
         $book->date_of_issue = $request->date_of_issue;
         $book->description = $request->description;
         $book->save();
-
-        Session::flash('message', 'Successfully created nerd!');
+        
         return redirect()->route('books.index')->with('message-add','Książka została dodana');
 
     }
