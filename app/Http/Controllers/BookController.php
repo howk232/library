@@ -43,7 +43,7 @@ class BookController extends Controller
         $book->date_of_issue = $request->date_of_issue;
         $book->description = $request->description;
         $book->save();
-        
+
         return redirect()->route('books.index')->with('message-add','Książka została dodana');
 
     }
@@ -68,7 +68,8 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        $book = Book::findOrFail($id);
+        return view('books.edit',compact('book'));
     }
 
     /**
@@ -80,7 +81,13 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $book = Book::findOrFail($id);
+        $book->title = $request->title;
+        $book->author = $request->author;
+        $book->date_of_issue = $request->date_of_issue;
+        $book->description = $request->description;
+        $book->save();
+        return redirect()->route('books.index')->with('message-update','Książka została zmodyfikowana');
     }
 
     /**
