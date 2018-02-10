@@ -17,3 +17,4 @@ Auth::routes();
 
 Route::get('/home', 'BookCOntroller@index')->name('home');
 Route::get('/books/destroy/{id}', 'BookController@destroy');
+Route::get('/books-image/{id}/{sizeHeight}/{sizeWidth}', 'ImagesController@booksMiniature');

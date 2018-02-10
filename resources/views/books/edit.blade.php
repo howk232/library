@@ -14,15 +14,31 @@
                 Edycja książki {{ $book->title }}
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ url('/books/' . $book->id) }}">
+                <form method="POST" action="{{ url('/books/' . $book->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('patch')
+
+                    @if(isset($book->img_book))
+                        <div class="text-center">
+                            <img class="rounded img-fluid img-thumbnail" src="{{ url('/books-image/' . $book->id . '/200/300') }}" alt="miniature">
+                        </div>
+                    @endif
+
+                    <div class="form-group col-md-8 offset-md-2">
+                        <label for="img_book">Ministurka</label>
+                        <input type="file" class="form-control{{ $errors->has('img_book') ? ' is-invalid' : '' }}" placeholder="zdjęcie" name="img_book" value="{{ $book->img_book }}">
+                        @if ($errors->has('img_book'))
+                            <span class="{{ $errors->has('img_book') ? ' invalid-feedback' : '' }}">
+                                <strong>{{ $errors->first('img_book') }}</strong>
+                            </span>
+                        @endif
+                    </div>
 
                     <div class="form-group col-md-8 offset-md-2">
                         <label for="title">Tytuł</label>
                         <input type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" placeholder="tytuł" name="title" value="{{ $book->title }}">
                         @if ($errors->has('title'))
-                            <span class="{{ $errors->has('author') ? ' invalid-feedback' : '' }}">
+                            <span class="{{ $errors->has('title') ? ' invalid-feedback' : '' }}">
                                 <strong>{{ $errors->first('title') }}</strong>
                             </span>
                         @endif

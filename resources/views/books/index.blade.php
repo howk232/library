@@ -25,6 +25,7 @@
                     <th>Tytuł</th>
                     <th>Data wydania</th>
                     <th>Opis</th>
+                    <th>Miniaturka</th>
                     <th>Opcje</th>
                 </tr>
                 @if($books->count())
@@ -34,6 +35,11 @@
                             <td>{{ strlen($book->title) > 10 ? substr($book->title,0,10)."..." : $book->title }}</td>
                             <td>{{ $book->date_of_issue }}</td>
                             <td>{{ strlen($book->description) > 100 ? substr($book->description,0,100)."..." : $book->description }}</td>
+                            <td>
+                                @if(isset($book->img_book))
+                                        <img class="img-thumbnail" src="{{ url('/books-image/' . $book->id . '/50/80') }}" alt="miniature">
+                                @endif
+                            </td>
                             <td><a class="btn btn-info" href="{{ url('/books/' . $book->id) }}">Szeczegóły</a>
                                 <a class="btn btn-info" href="{{ url('/books/' . $book->id . '/edit') }}">Edycja</a>
                                 <a class="btn btn-danger" href="{{ url('/books/destroy/' . $book->id) }}">Usuń</a>

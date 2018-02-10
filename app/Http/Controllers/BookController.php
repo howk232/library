@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Book;
+use Illuminate\Support\Facades\Storage;
 use Session;
 
 class BookController extends Controller
@@ -111,6 +112,16 @@ class BookController extends Controller
         $book->author = $request->author;
         $book->date_of_issue = $request->date_of_issue;
         $book->description = $request->description;
+
+        if($request->file('img_book')){
+            $upload_path = 'public/books/' . $id . '/img_books';
+            $path = Storage::putFileAs(
+                $upload_path, $request->file('img_book'), 'books.jpg'
+            );
+            $img_book_filename = str_replace($upload_path . '/','', $path);
+            $book->img_book = $img_book_filename;
+        }
+
         $book->save();
 
         return view('books.show', compact('book'));
